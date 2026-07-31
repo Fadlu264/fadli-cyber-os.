@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FADLI CYBER OS</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Consolas,monospace;
+}
+
+body{
+background:#000;
+overflow:hidden;
+color:#00ffcc;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+.box{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:90%;
+max-width:420px;
+padding:25px;
+text-align:center;
+border:2px solid cyan;
+border-radius:15px;
+background:rgba(0,0,0,.55);
+box-shadow:0 0 30px cyan;
+backdrop-filter:blur(8px);
+}
+
+.logo{
+width:120px;
+border-radius:50%;
+box-shadow:0 0 20px cyan;
+margin-bottom:15px;
+}
+
+h1{
+font-size:35px;
+color:#00ffff;
+text-shadow:0 0 20px cyan;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{text-shadow:0 0 10px cyan;}
+to{text-shadow:0 0 30px #00ffcc;}
+}
+
+p{
+color:white;
+margin-top:10px;
+}
+
+#jam{
+margin-top:15px;
+font-size:22px;
+color:#00ff66;
+}
+
+button{
+margin-top:20px;
+padding:12px 30px;
+background:#00ffff;
+border:none;
+border-radius:8px;
+font-size:18px;
+cursor:pointer;
+font-weight:bold;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.08);
+box-shadow:0 0 25px cyan;
+}
+
+a{
+display:block;
+margin-top:18px;
+color:#00ff66;
+text-decoration:none;
+font-size:18px;
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div class="box">
+
+<img src="logo.png" class="logo">
+
+<h1>FADLI CYBER OS</h1>
+
+<p>Welcome To My Website</p>
+
+<div id="jam"></div>
+
+<button onclick="halo()">ENTER</button>
+
+<a href="https://github.com" target="_blank">
+🌐 GitHub
+</a>
+
+</div>
+
+<script>
+
+function halo(){
+alert("Selamat Datang Fadli 🚀");
+}
+
+function waktu(){
+let d=new Date();
+document.getElementById("jam").innerHTML=d.toLocaleTimeString();
+}
+
+setInterval(waktu,1000);
+waktu();
+
+const canvas=document.getElementById("matrix");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+const huruf="01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const font=18;
+const kolom=canvas.width/font;
+const hujan=[];
+
+for(let i=0;i<kolom;i++) hujan[i]=1;
+
+function gambar(){
+
+ctx.fillStyle="rgba(0,0,0,0.08)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="#00ff66";
+ctx.font=font+"px monospace";
+
+for(let i=0;i<hujan.length;i++){
+
+let teks=huruf[Math.floor(Math.random()*huruf.length)];
+
+ctx.fillText(teks,i*font,hujan[i]*font);
+
+if(hujan[i]*font>canvas.height&&Math.random()>0.98)
+hujan[i]=0;
+
+hujan[i]++;
+
+}
+
+}
+
+setInterval(gambar,35);
+
+</script>
+
+</body>
+</html>
