@@ -1,3 +1,3 @@
-function halo(){
-    alert("Halo Fadli!");
+function halo() {
+    document.getElementById("menu").style.display = "block";
 }
