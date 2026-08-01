@@ -9,4 +9,20 @@ button{
     padding:10px 20px;
     border:none;
     border-radius:10px;
+    
+}
+/* Pastikan body dan html bisa discroll */
+html, body {
+  height: auto !important; /* Jangan dipaksa 100vh di HP */
+  min-height: 100%;
+  overflow-y: auto !important; /* Izinkan scroll vertikal */
+  overflow-x: hidden; /* Mencegah scroll horizontal yang bikin layout rusak */
+}
+
+/* Jika container utama kamu pakai fixed height, ubah jadi auto */
+.container, .main-box, .card { 
+  /* Ganti dengan nama class container utamamu */
+  max-height: none !important;
+  height: auto !important;
+  overflow: visible !important;
 }
