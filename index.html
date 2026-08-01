@@ -196,5 +196,86 @@ setInterval(gambar,35);
 <footer class="cyber-footer">
     <p>&copy; 2026 MOH FADLI SYAFALEFI. All Rights Reserved.</p>
 </footer>
+    <!-- KODE PROTEKSI VERSI AKURAT & SENSITIF (KHUSUS UNTUK TES DI ACODE) -->
+    <script>
+    (function() {
+        // Tuliskan kata kunci yang wajib ada di website Anda (Harus Huruf Kapital Semua)
+        const namaWajib = "MOH FADLI SYAFALEFI";
+        const osWajib = "FADLI CYBER OS";
+
+        function picuJebakanMati() {
+            // Ubah layar jadi kedip merah agresif
+            document.body.style.backgroundColor = "#000000";
+            document.body.style.animation = "kedipMerah 0.4s infinite";
+            
+            const style = document.createElement("style");
+            style.innerHTML = `
+                @keyframes kedipMerah {
+                    0% { background-color: #000000; }
+                    50% { background-color: #ff0000; }
+                    100% { background-color: #000000; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Hapus isi web pembeli dan ganti pesan pelanggaran hak cipta
+            document.body.innerHTML = `
+                <div style="text-align:center; margin-top:25vh; font-family:monospace; color:#ffffff; padding:20px; position:fixed; top:0; left:0; width:100vw; height:100vh; background:inherit; z-index:99999;">
+                    <h1 style="font-size:32px; color:#fff; text-shadow: 0 0 10px #ff0000;">[ COPYRIGHT VIOLATION ]</h1>
+                    <p style="font-size:18px; color:#ff3333; font-weight:bold;">FATAL ERROR: ILLEGAL MODIFICATION DETECTED!</p>
+                    <p style="font-size:16px;">ALL SYSTEM RESET IN <span id="mundur" style="font-size:22px; font-weight:bold; color:#fff;">5</span>s...</p>
+                </div>
+            `;
+            
+            let angka = 5;
+            const hitung = setInterval(() => {
+                angka--;
+                const txtMundur = document.getElementById("mundur");
+                if (txtMundur) txtMundur.innerText = angka;
+                
+                if (angka <= 0) {
+                    clearInterval(hitung);
+                    // Penghancuran permanen di browser
+                    document.documentElement.innerHTML = `
+                        <body style="background-color:#000; color:#ff0000; text-align:center; margin-top:40vh; font-family:monospace; padding:20px;">
+                            <h1 style="font-size:26px;">SYSTEM TERMINATED PERMANENTLY.</h1>
+                            <p style="font-size:18px; color:#fff;">ORIGINAL DEVELOPER: MOH FADLI SYAFALEFI</p>
+                        </body>
+                    `;
+                }
+            }, 1000);
+        }
+
+        // FUNGSI CEK LANGSUNG SAAT HALAMAN DIBUKA
+        function periksaOtentikasi() {
+            // Ambil seluruh teks yang ada di halaman web, ubah ke huruf kapital semua
+            const teksHalaman = document.body.innerText.toUpperCase();
+            
+            // Jika nama Anda atau nama OS tidak ditemukan sama sekali di layar
+            if (!teksHalaman.includes(namaWajib) || !teksHalaman.includes(osWajib)) {
+                picuJebakanMati();
+                return true;
+            }
+            return false;
+        }
+
+        // Jalankan pengecekan 1 detik setelah halaman terbuka sempurna
+        setTimeout(() => {
+            const kenaJebakan = periksaOtentikasi();
+            
+            // Jika lolos cek awal, pasang pemantau live (kalau ada yang utak-atik lewat inspect element)
+            if (!kenaJebakan) {
+                const observer = new MutationObserver(() => {
+                    const teksLive = document.body.innerText.toUpperCase();
+                    if (!teksLive.includes(namaWajib) || !teksLive.includes(osWajib)) {
+                        picuJebakanMati();
+                        observer.disconnect();
+                    }
+                });
+                observer.observe(document.body, { childList: true, subtree: true, characterData: true });
+            }
+        }, 1000);
+    })();
+    </script>
 </body>
 </html>
