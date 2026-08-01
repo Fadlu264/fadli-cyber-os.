@@ -8,9 +8,9 @@ body{
 button{
     padding:10px 20px;
     border:none;
-    border-radius:10px;
-    
+    border-radius:10px; 
 }
+
 /* Pastikan body dan html bisa discroll */
 html, body {
   height: auto !important; /* Jangan dipaksa 100vh di HP */
