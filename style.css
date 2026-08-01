@@ -4,27 +4,6 @@ body{
     text-align:center;
     font-family:Arial;
 }
-/* Reset dasar agar tampilan konsisten */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-/* Gambar & video responsif */
-img, video, iframe {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Body menggunakan satuan relatif */
-body {
-  font-size: 1rem; /* 16px default, tapi bisa di-zoom user */
-  line-height: 1.6;
-  padding: 1rem; /* Jarak aman dari pinggir layar HP */
-  word-wrap: break-word; /* Mencegah teks panjang merusak layout */
-}
 
 button{
     padding:10px 20px;
