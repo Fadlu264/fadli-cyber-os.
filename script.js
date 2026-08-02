@@ -1,3 +1,5 @@
+// FADLI CYBER OS V2.0 - ULTIMATE EDITION - UPLOAD TANGGAL 3 AGUSTUS 2026
+
 /* =========================================
    FADLI CYBER OS - ULTIMATE SCRIPT V2.0
    Fitur: Matrix Rain, Real-time Clock, 
