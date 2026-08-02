@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FADLI CYBER OS</title>
@@ -106,8 +107,6 @@ font-size:18px;
 <canvas id="matrix"></canvas>
 
 <div class="box">
-
-<img src="logo.png" class="logo">
 
 <h1>FADLI CYBER OS</h1>
 
@@ -222,7 +221,7 @@ setInterval(gambar,35);
             document.body.innerHTML = `
                 <div style="text-align:center; margin-top:25vh; font-family:monospace; color:#ffffff; padding:20px; position:fixed; top:0; left:0; width:100vw; height:100vh; background:inherit; z-index:99999;">
                     <h1 style="font-size:32px; color:#fff; text-shadow: 0 0 10px #ff0000;">[ COPYRIGHT VIOLATION ]</h1>
-                    <p style="font-size:18px; color:#ff3333; font-weight:bold;">FATAL ERROR: ILLEGAL MODIFICATION DETECTED!</p>
+                    <p style="font-size:18px; color:#ff3333; font-weight:bold;">FATAL ERROR: WARNING MODIFICATION DETECTED!</p>
                     <p style="font-size:16px;">ALL SYSTEM RESET IN <span id="mundur" style="font-size:22px; font-weight:bold; color:#fff;">5</span>s...</p>
                 </div>
             `;
@@ -278,10 +277,4 @@ setInterval(gambar,35);
     })();
     </script>
 </body>
-<script>
-    // Script otomatis deteksi HP
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        document.getElementById('desktop-warning').style.display = 'block';
-    }
-</script>
 </html>
