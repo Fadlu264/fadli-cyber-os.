@@ -26,3 +26,48 @@ html, body {
   height: auto !important;
   overflow: visible !important;
 }
+
+/* Sesuaikan dengan tinggi banner warning kamu */
+:root {
+    --warning-height: 50px; /* Ubah sesuai tinggi banner aslimu */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    
+    /* KUNCI UTAMA: Beri padding atas & bawah sebesar banner */
+    padding-top: var(--warning-height);
+    padding-bottom: var(--warning-height);
+    box-sizing: border-box;
+}
+
+/* Banner Warning tetap fixed di atas */
+#desktop-warning {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--warning-height);
+    z-index: 9999;
+    background: #ff0000;
+    color: white;
+    text-align: center;
+    line-height: var(--warning-height); /* Tengahin teks vertikal */
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    display: none; /* Muncul hanya di HP via JS */
+}
+
+/* Copyright di bawah juga dapet padding otomatis dari body */
+.copyright {
+    text-align: center;
+    padding: 15px 20px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    overflow-x: auto;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+}
