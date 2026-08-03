@@ -53,6 +53,69 @@ box-sizing:border-box;
 font-family:Consolas,monospace;
 }
 
+.box{
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.box::before{
+    content:"";
+    position:absolute;
+    top:-50%;
+    left:-50%;
+    width:200%;
+    height:200%;
+    background:conic-gradient(
+        transparent,
+        transparent,
+        #ffd700,
+        transparent,
+        transparent
+    );
+    animation:rotateBorder 3s linear infinite;
+}
+
+.box::after{
+    content:"";
+    position:absolute;
+    inset:3px;
+    background:#000;
+    border-radius:12px;
+    z-index:1;
+}
+
+.box>*{
+    position:relative;
+    z-index:2;
+}
+
+@keyframes rotateBorder{
+    100%{
+        transform:rotate(360deg);
+    }
+}
+
+#boot{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#000;
+color:#00ff66;
+font-family:monospace;
+padding:20px;
+font-size:16px;
+z-index:99999;
+overflow:hidden;
+}
+
+#bootText{
+white-space:pre-wrap;
+line-height:1.6;
+}
+
 body{
 background:#000;
 overflow:hidden;
@@ -323,10 +386,96 @@ setInterval(() => {
   }
 }, 500);
     </script>
+        <!-- ====================================================
+         KODE KHUSUS PEMBATAS WAKTU LANGGANAAN BULANAN (100K)
+         ==================================================== -->
+    <script>
+    (function() {
+        // --- PENGATURAN TANGGAL KEDALUWARSA (UBAH SETIAP ADA YANG BELI) ---
+        // Format: Date(Tahun, Bulan-1, Tanggal)
+        // Catatan: Januari=0, Februari=1, Maret=2, April=3, Mei=4, Juni=5, Juli=6, Agustus=7, September=8, Oktober=9, November=10, Desember=11
+        // Contoh di bawah: Langganan akan otomatis habis pada 1 September 2026
+        const tanggalExpired = new Date(-, -, -); 
+
+        // Fungsi mengunci layar saat waktu sebulan habis
+        function kunciMasaAktifHabis() {
+            // Efek latar belakang berkedip merah agresif
+            document.body.style.backgroundColor = "#000000";
+            document.body.style.animation = "kedipMerah 0.5s infinite";
+            
+            const style = document.createElement("style");
+            style.innerHTML = `@keyframes kedipMerah { 0%{background:#000} 50%{background:#ff0000} 100%{background:#000} }`;
+            document.head.appendChild(style);
+            
+            // Kunci tampilan layar total tanpa tombol enter pembeli
+            document.body.innerHTML = `
+                <div style="text-align:center; margin-top:25vh; font-family:monospace; color:#ffffff; padding:20px; position:fixed; top:0; left:0; width:100vw; height:100vh; background:inherit; z-index:99999; box-sizing:border-box;">
+                    <h1 style="font-size:32px; color:#fff; text-shadow: 0 0 10px #ff0000; margin-bottom:20px;">[ SYSTEM EXPIRED ]</h1>
+                    <p style="font-size:22px; color:#ff3333; font-weight:bold; margin-bottom:10px;">Masa Aktif Langganan Bulanan Anda Telah Habis! ⌛</p>
+                    <p style="font-size:16px; color:#fff;">Silakan hubungi Developer Utama untuk perpanjangan masa aktif:</p>
+                    <h2 style="color:#00ffff; font-size:24px; text-shadow: 0 0 5px #00ffff; margin-top:10px;">MOH FADLI SYAFALEFI</h2>
+                </div>
+            `;
+            throw new Error("Masa langganan habis.");
+        }
+
+        // Jalankan pengecekan tanggal otomatis saat website dibuka
+        const tanggalSekarang = new Date();
+        if (tanggalSekarang > tanggalExpired) {
+            kunciMasaAktifHabis();
+        }
+    })();
+    </script>
     <script>
 setTimeout(()=>{
 document.getElementById("loading").style.display="none";
 },3000);
+</script>
+<script>
+const bootLines = [
+"[BOOT] Starting FADLI Cyber OS...",
+"[ OK ] Loading Kernel",
+"[ OK ] Initializing Security Module",
+"[ OK ] Loading Network Driver",
+"[ OK ] Verifying System Files",
+"[ OK ] Starting Matrix Engine",
+"[ OK ] Loading User Interface",
+"[ OK ] Connecting Database",
+"[ OK ] Checking Firewall",
+"[ OK ] Encryption Enabled",
+"[ OK ] Anti-Tamper Active",
+"[ OK ] All Modules Loaded",
+"",
+"ACCESS GRANTED",
+"Welcome Developer"
+];
+
+let i = 0;
+const bootText = document.getElementById("bootText");
+
+function boot(){
+
+if(i < bootLines.length){
+
+bootText.innerHTML += bootLines[i] + "\n";
+
+bootText.scrollTop = bootText.scrollHeight;
+
+i++;
+
+setTimeout(boot,250);
+
+}else{
+
+setTimeout(()=>{
+document.getElementById("boot").style.display="none";
+},1200);
+
+}
+
+}
+
+boot();
 </script>
 </body>
 <div id="loading">
